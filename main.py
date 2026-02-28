@@ -7,6 +7,7 @@ async def main():
     await runner.setup()
     site = aiohttp.web.TCPSite(runner, port=8080)
     await site.start()
+    print(1)
     '''async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout()) as client:
         async with client.get(f'https://auth.docker.io/token?service=registry.docker.io&scope=repository:traffmonetizer/cli_v2:pull') as response:
             token = (await response.json()).get('token')
