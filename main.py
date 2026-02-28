@@ -5,7 +5,7 @@ async def main():
     app.add_routes([aiohttp.web.static('/', pathlib.Path(__file__).resolve().parent, show_index=True)])
     runner = aiohttp.web.AppRunner(app)
     await runner.setup()
-    site = aiohttp.web.TCPSite(runner, port=8000)
+    site = aiohttp.web.TCPSite(runner, port=8080)
     await site.start()
     async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout()) as client:
         async with client.get(f'https://auth.docker.io/token?service=registry.docker.io&scope=repository:traffmonetizer/cli_v2:pull') as response:
