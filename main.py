@@ -1,4 +1,4 @@
-import asyncio, aiohttp.web, pathlib, sys, builtins, uuid, io, posixpath, tarfile, math
+import asyncio, aiohttp.web, pathlib, uvloop, builtins, uuid, io, posixpath, tarfile, math
 
 async def main():
     app = aiohttp.web.Application()
@@ -31,4 +31,4 @@ async def main():
                 await node.wait()'''
     await asyncio.sleep(math.inf)
 
-asyncio.run(main())
+uvloop.run(main())
