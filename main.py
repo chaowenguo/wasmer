@@ -19,7 +19,7 @@ if __name__ == "__main__":
     host = os.environ.get('HOST', '127.0.0.1')
 
     # Get the PORT environment variable if it's present; otherwise, default to 8000
-    port = int(os.environ.get('PORT', 8080))
+    port = int(8080)
 
     server = HTTPServer((host, port), CustomHandler)
     print(f"Starting server on http://{host}:{port}")
