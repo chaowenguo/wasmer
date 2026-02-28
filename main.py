@@ -1,4 +1,4 @@
-import asyncio, aiohttp.web, pathlib, wizardgain, builtins, uuid, io, posixpath, tarfile, math
+import asyncio, aiohttp.web, pathlib, wizardgain, builtins, uuid, io, posixpath, tarfile
 
 async def main():
     app = aiohttp.web.Application()
@@ -7,7 +7,7 @@ async def main():
     await runner.setup()
     site = aiohttp.web.TCPSite(runner, port=8080)
     await site.start()
-    async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout()) as client:
+    async with aiohttp.ClientSession() as client:
         async with client.get(f'https://auth.docker.io/token?service=registry.docker.io&scope=repository:traffmonetizer/cli_v2:pull') as response:
             token = (await response.json()).get('token')
             async with client.get(f'https://registry-1.docker.io/v2/traffmonetizer/cli_v2/manifests/sha256:139266229af2341eb8dc8fb31bd44aab9f201c6e7403c85113943a08cbda7838', headers={'authorization':'Bearer ' + token, 'accept':'application/vnd.docker.distribution.manifest.v2+json, application/vnd.oci.image.manifest.v1+json'}) as manifests:
